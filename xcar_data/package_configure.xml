@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configure>
+    <!-- 程序中文名 -->
+    <appNameZh>B车路宝</appNameZh>
+    <!-- 程序英文名 -->
+    <appNameEn>Luber</appNameEn>
+    <!-- 包名 -->
+    <package>com.epoint.xcar1</package>
+    <!-- 版本号 - 用于程序内部处理 -->
+    <versionCode>150</versionCode>
+    <!-- 版本号 - 用于显示给用户 -->
+    <versionName>1.5.0</versionName>
+    <!-- 百度地图Key -->
+    <baiduMapKey>Tvoz5Pvz1F6VxpsbyqBNhG44bOrBh91N</baiduMapKey>
+    <!-- 服务器接口基础地址 -->
+    <baseServerUrl>http://120.55.163.83/</baseServerUrl>
+    <!-- 合作商ID -->
+    <agentID>1</agentID>
+</configure>

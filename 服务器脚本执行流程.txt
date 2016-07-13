@@ -1,0 +1,64 @@
+Step 一：解包
+	apktool d xxx.apk
+
+Step 二：替换、修改资源
+
+	2-1 替换ICON:
+		替换\res\drawable-mdpi-v4\ic_launcher.png	48x48
+		替换\res\drawable-hdpi-v4\ic_launcher.png	72x72
+		替换\res\drawable-xhdpi-v4\ic_launcher.png	96x96
+		替换\res\drawable-xxhdpi-v4\ic_launcher.png	144x144
+	2-2 替换启动图片：
+		替换\res\drawable-xxhdpi-v4\start_page_bg.png	1080x1920
+
+	2-3 修改程序名称：
+		修改\res\values\strings.xml中[<string name="app_name">xxxxxx</string>]xxxxxx为程序英文名称
+		修改\res\values-zh\strings.xml中[<string name="app_name">xxxxxx</string>]xxxxxx为程序中文名称
+	
+	2-4 修改公司名称：
+		修改\res\values\strings.xml中[<string name="me_copy_right">CopyRight&#169; 2015&#8211;2017 xxxxxx All rights reserved</string>]xxxxxx为合作商公司名称，2015和2017这两个数字可以根据情况修改
+		修改\res\values-zh\strings.xml中[<string name="me_copy_right">CopyRight&#169; 2015&#8211;2017 xxxxxx All rights reserved</string>]xxxxxx为合作商公司名称，2015和2017这两个数字可以根据情况修改
+
+	2-5 修改版本号：
+		修改\apktool.yml中[versionCode: 'xxx']xxx为程序内部升级版本号
+		修改\apktool.yml中versionName: 'xxx.xxx.xxx']xxx.xxx.xxx为用于显示给客户的版本号
+
+	2-6 修改百度KEY：
+		修改\AndroidManifest.xml中[<meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="xxxxxx"/>]xxxxxx为百度地图的KEY
+
+	2-7 修改\AndroidManifest.xml中以下参数为合作商参数(太多不一一按格式)：
+		// 服务器接口基础地址
+		<meta-data android:name="PARAM.BASE_URL" android:value="http://120.55.163.83/"/>
+		// 合作商ID
+		<meta-data android:name="PARAM.AGENT_ID" android:value="250"/>
+		/ 分享 - 微信 - APPID
+		<meta-data android:name="PARAM.SHARE.WEIXIN.APPID" android:value="wx20f3aac99e92afd9"/>
+		// 分享 - 微信 - APPSECRET
+		<meta-data android:name="PARAM.SHARE.WEIXIN.APPSECRET" android:value="6afd12aebc501d7404b52f366e51f578"/>
+		// 分享 - QQ - APPID
+		<meta-data android:name="PARAM.SHARE.QQ.APPID" android:value="1105520310"/>
+		// 分享 - QQ - APPKEY
+		<meta-data android:name="PARAM.SHARE.QQ.APPKEY" android:value="CWCQNZIhiyRjg90N"/>
+		// 分享 - 微博 - APPID
+		<meta-data android:name="PARAM.SHARE.WEIBO.APPKEY" android:value="3.61156762E9"/>
+		// 分享 - 微博 - APPSECRET
+		<meta-data android:name="PARAM.SHARE.WEIBO.APPSECRET" android:value="8c786d2e3432decaac03190ea73ee288"/>
+
+Step 三：打包
+	apktool b xxx
+
+Step 四：重新签名
+
+	jarsigner -verbose -keystore Epo2016IntApp.keystore -storepass Epo2016IntApp -signedjar signed.apk -digestalg SHA1 -sigalg MD5withRSA xxx.apk epoint
+
+	该命令的解释：
+	1、-keystore Epo2016IntApp.keystore：签名文件，直接写文件名说明在当前目录下，否则请自行指定具体路径
+	2、-storepass Epo2016IntApp：自动输入密码，keystore的密码和alias的密码都是我用的都是Epo2016IntApp
+	3、-signedjar signed.apk：指定签名后的文件存储路径，这里是以signed.apk的文件名存在当前路径下
+	4、-digestalg SHA1 -sigalg MD5withRSA：必须加上的参数，如果你是jdk 1.6也不受影响
+	5、xxx.apk：未签名的apk路径，这里是当前路径下的xxx.apk文件
+	6、epoint：最后这个是alias
+
+PS: apktool的配置
+	将apktool.jar和apktoo.bat所在的文件夹添加到系统环境变量中或者拷贝到系统文件夹中C://Windows，
+	Linux下拷贝到/usr/local/bin (root needed)中，并且要记得修改文件权限（chmod +x）
