@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		580FE5A41D377A6100932E2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 580FE5A31D377A6100932E2E /* main.m */; };
+		580FE5AD1D377ED000932E2E /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 580FE5AC1D377ED000932E2E /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		580FE5AF1D377EDE00932E2E /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 580FE5AE1D377EDE00932E2E /* libxml2.tbd */; };
+		580FE5B21D377F6700932E2E /* XMLReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 580FE5B11D377F6700932E2E /* XMLReplace.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		580FE59E1D377A6100932E2E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		580FE5A01D377A6100932E2E /* XmlRW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XmlRW; sourceTree = BUILT_PRODUCTS_DIR; };
+		580FE5A31D377A6100932E2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		580FE5AB1D377ED000932E2E /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		580FE5AC1D377ED000932E2E /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		580FE5AE1D377EDE00932E2E /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		580FE5B01D377F6700932E2E /* XMLReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReplace.h; sourceTree = "<group>"; };
+		580FE5B11D377F6700932E2E /* XMLReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReplace.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		580FE59D1D377A6100932E2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580FE5AF1D377EDE00932E2E /* libxml2.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		580FE5971D377A6100932E2E = {
+			isa = PBXGroup;
+			children = (
+				580FE5AE1D377EDE00932E2E /* libxml2.tbd */,
+				580FE5A21D377A6100932E2E /* XmlRW */,
+				580FE5A11D377A6100932E2E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		580FE5A11D377A6100932E2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				580FE5A01D377A6100932E2E /* XmlRW */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		580FE5A21D377A6100932E2E /* XmlRW */ = {
+			isa = PBXGroup;
+			children = (
+				580FE5A31D377A6100932E2E /* main.m */,
+				580FE5B01D377F6700932E2E /* XMLReplace.h */,
+				580FE5B11D377F6700932E2E /* XMLReplace.m */,
+				580FE5AA1D377ED000932E2E /* GDataXML */,
+			);
+			path = XmlRW;
+			sourceTree = "<group>";
+		};
+		580FE5AA1D377ED000932E2E /* GDataXML */ = {
+			isa = PBXGroup;
+			children = (
+				580FE5AB1D377ED000932E2E /* GDataXMLNode.h */,
+				580FE5AC1D377ED000932E2E /* GDataXMLNode.m */,
+			);
+			path = GDataXML;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		580FE59F1D377A6100932E2E /* XmlRW */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 580FE5A71D377A6100932E2E /* Build configuration list for PBXNativeTarget "XmlRW" */;
+			buildPhases = (
+				580FE59C1D377A6100932E2E /* Sources */,
+				580FE59D1D377A6100932E2E /* Frameworks */,
+				580FE59E1D377A6100932E2E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XmlRW;
+			productName = XmlRW;
+			productReference = 580FE5A01D377A6100932E2E /* XmlRW */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		580FE5981D377A6100932E2E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Sherwin.Chen;
+				TargetAttributes = {
+					580FE59F1D377A6100932E2E = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 580FE59B1D377A6100932E2E /* Build configuration list for PBXProject "XmlRW" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 580FE5971D377A6100932E2E;
+			productRefGroup = 580FE5A11D377A6100932E2E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				580FE59F1D377A6100932E2E /* XmlRW */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		580FE59C1D377A6100932E2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				580FE5B21D377F6700932E2E /* XMLReplace.m in Sources */,
+				580FE5A41D377A6100932E2E /* main.m in Sources */,
+				580FE5AD1D377ED000932E2E /* GDataXMLNode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		580FE5A51D377A6100932E2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		580FE5A61D377A6100932E2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		580FE5A81D377A6100932E2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		580FE5A91D377A6100932E2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		580FE59B1D377A6100932E2E /* Build configuration list for PBXProject "XmlRW" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				580FE5A51D377A6100932E2E /* Debug */,
+				580FE5A61D377A6100932E2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		580FE5A71D377A6100932E2E /* Build configuration list for PBXNativeTarget "XmlRW" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				580FE5A81D377A6100932E2E /* Debug */,
+				580FE5A91D377A6100932E2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 580FE5981D377A6100932E2E /* Project object */;
+}

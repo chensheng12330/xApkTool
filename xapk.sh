@@ -4,13 +4,13 @@
 # Date：2016.05.25
 # Update: 2015.06.25 by Sherwin.chen
 
-#脚本使用说明  SLY_PackTool.sh app_data_xxx 0  请将xcocebuild 工具升级xcode7以上才能支持新语法.
+#脚本使用说明  SLY_PackTool.sh app_data_xxx myAppName
 #参数1  app_data_xxx 【绝对路径地址】文件夹中需要提供如下文件, 生成的APK包将会放在此文件夹上.
 #ic_launcher-web.png, ic_launcher_144.png, ic_launcher_48.png,
 #ic_launcher_72.png, ic_launcher_96.png, package_configure.xml,
 #start_page_bg.png
 
-#参数2  生成IPA包的名称
+#参数2  生成IPA包的名称 [myAppName]
 
 
 #脚本工作目录
@@ -18,17 +18,23 @@ ShellPath=$(cd "$(dirname "$0")"; pwd)
 
 cd "${ShellPath}"
 
+#打包资源文件夹绝对路径
+INPUT_PATH="$1"
+
 #Plist配置文件名
-MDM_PLIST="info.plist"
+MDM_PLIST="mdm.plist"
+# 读取Plist内容(其余配置信息后续加)
+APP_Identify=$(/usr/libexec/PlistBuddy -c "Print:CFBundleIdentifier" "${INPUT_PATH}/${MDM_PLIST}")
+APP_DisplayName=$(/usr/libexec/PlistBuddy -c "Print:CFBundleDisplayName" "${INPUT_PATH}/${MDM_PLIST}")
+
 
 #解包APK副本路径
-APKCopy="${ShellPath}/src_apk/xcar.apk"
+APKCopy="${ShellPath}/src_apk/${APP_Identify}.apk"
 
 #工作副本目录,  可更新路径，绝对路径，脚本内自定义
 Workspace="workspace"
 
-#打包资源文件夹绝对路径
-INPUT_PATH="$1"
+
 
 #step 0x01 检查参数
 echo "(0x00)-->校验打包资源文件夹是否存在..."
@@ -91,62 +97,75 @@ cp -rf "${INPUT_PATH}/ic_launcher_96.png" "${XHDPI}${ICON_PNG}"
 cp -rf "${INPUT_PATH}/ic_launcher_144.png" "${XXHDPI}${ICON_PNG}"
 
 cp -rf "${INPUT_PATH}/$Sart_PNG" "${MAIN_DIR}$Sart_PNG"
+echo "(0x04) √  "
+echo ""
 
-# 读取Plist内容(其余配置信息后续加)
-APP_Identify=$(/usr/libexec/PlistBuddy -c "Print:CFBundleIdentifier" "${INPUT_PATH}/${MDM_PLIST}")
-APP_DisplayName=$(/usr/libexec/PlistBuddy -c "Print:CFBundleDisplayName" "${INPUT_PATH}/${MDM_PLIST}")
-APP_Version=$(/usr/libexec/PlistBuddy -c "Print:CFBundleVersion" "${INPUT_PATH}/${MDM_PLIST}")
-MDM_AgentID=$(/usr/libexec/PlistBuddy -c "Print:app_agent_id" "${INPUT_PATH}/${MDM_PLIST}")
-MDM_CompanyInfo=$(/usr/libexec/PlistBuddy -c "Print:app_company_info" "${INPUT_PATH}/${MDM_PLIST}")
-MDM_VersionCode=$(/usr/libexec/PlistBuddy -c "Print:app_version_code" "${INPUT_PATH}/${MDM_PLIST}")
-MDM_BaiduMapKey=$(/usr/libexec/PlistBuddy -c "Print:app_baidumap_key" "${INPUT_PATH}/${MDM_PLIST}")
-MDM_app_server_host=$(/usr/libexec/PlistBuddy -c "Print:app_server_host" "${INPUT_PATH}/${MDM_PLIST}")
 
-echo $MDM_app_server_host
-exit 0
-#修改程序名称
+#APP_Version=$(/usr/libexec/PlistBuddy -c "Print:CFBundleVersion" "${INPUT_PATH}/${MDM_PLIST}")
+#MDM_AgentID=$(/usr/libexec/PlistBuddy -c "Print:app_agent_id" "${INPUT_PATH}/${MDM_PLIST}")
+#MDM_CompanyInfo=$(/usr/libexec/PlistBuddy -c "Print:app_company_info" "${INPUT_PATH}/${MDM_PLIST}")
+#MDM_VersionCode=$(/usr/libexec/PlistBuddy -c "Print:app_version_code" "${INPUT_PATH}/${MDM_PLIST}")
+#MDM_BaiduMapKey=$(/usr/libexec/PlistBuddy -c "Print:app_baidumap_key" "${INPUT_PATH}/${MDM_PLIST}")
+#MDM_app_server_host=$(/usr/libexec/PlistBuddy -c "Print:app_server_host" "${INPUT_PATH}/${MDM_PLIST}")
 
+#echo $MDM_app_server_host
+#sed 's#app_name["].*$#app_name\">abc</string>#g' strings.xml > string1.xml
+
+#修改程序名称 [\res\values\strings.xml]   [\res\values-zh\strings.xml]
 #修改公司名称
-
 #修改版本号
-
 #修改百度KEY
-
 #替换参数配置文件
-//cp -rf "${INPUT_PATH}/$ADT_CIG" "${MAIN_DIR}${ADT_CIG}"
-echo "(0x01) √  "
+#XmlRW <info.plist PATH> <CopyAPPDirPath>
+# ./XmlRW "/Volumes/Data/SVN_Code/AndPK/xcar_data/mdm.plist" "/Volumes/Data/SVN_Code/AndPK/workspace/temp20160714100848/X_CHEN"
 
+#step 0x04  替换图片资源
+echo "(0x05)-->整合配置文件资源..."
+ ./XmlRW "${INPUT_PATH}/${MDM_PLIST}" "${MAIN_DIR}"
+ echo "(0x05) √  "
+ echo ""
 
-#step 0x03 执行打包脚本
-#编译出发布版：	ant clean auto-release
-#编译出调试版：	ant clean auto-debug
-echo "(0x02)-->开始编译，耗时操作,请稍等..."
+#step 0x06 执行打包脚本
+#apktool b xxx
+echo "(0x06)-->开始进行打包操作，耗时操作,请稍等..."
+./apktoolx.sh b "${MAIN_DIR}"
 
-cd "${MAIN_DIR}"
-
-ant auto-release
-
-APK_PATH="${MAIN_DIR}bin/xcar.apk"
-
-#查询打包是否成功
-if [ ! -f "${APK_PATH}" ]; then
+B_APK_PATH="${MAIN_DIR}/dist/$DUP_APK"
+#检测是否生成APK包
+if [ ! -f "${B_APK_PATH}" ]; then
   echo "----------------------------------------------------"
-	echo "--> ERROR-错误501：找不到签名生成的IPA包, SO? 打包APP失败."
+	echo "--> ERROR-错误501：找不到封包生成的IPA包, SO? 打包APP失败."
 	exit 7
 else
   echo "----------------------------------------------"
-	echo "(0x03) 编译APP完成! √ "
+	echo "(0x06) 封包APK完成! √ "
   echo ""
 fi
 
 
+#step 0x06 执行APK签名
+#jarsigner -verbose -keystore Epo2016IntApp.keystore -storepass Epo2016IntApp -signedjar signed.apk -digestalg SHA1 -sigalg MD5withRSA xxx.apk epoint
+SG_APK="${INPUT_PATH}/$2.apk"
+jarsigner -verbose -keystore Epo2016IntApp.keystore -storepass Epo2016IntApp -signedjar ${SG_APK} -digestalg SHA1 -sigalg MD5withRSA "${B_APK_PATH}" epoint
+
+#查询打包是否成功
+if [ ! -f "${SG_APK}" ]; then
+  echo "----------------------------------------------------"
+	echo "--> ERROR-错误501：找不到签名生成的IPA包, SO? 签名APK失败."
+	exit 6
+else
+  echo "----------------------------------------------"
+	echo "(0x06) 签名APP完成! √ "
+  echo ""
+fi
+
 #step 0x04 copy APK 到指定的目录
-mv -f "${APK_PATH}" "${INPUT_PATH}/$2"
+#mv -f "${APK_PATH}" "${INPUT_PATH}/$2"
 
 #清理工作区
 rm -rf "${Project_TEMP}"
-echo "(0x04)-->Nice Worker! -->打包成功!  GET √ "
+echo "(0x0FFFF)----->Nice Worker! 打包成功!  GET √ "
 
 echo '----------------------------------------------------'
-echo "安装包--->  ${INPUT_PATH}/$2"
+echo "安装包路径--->  ${SG_APK}"
 echo '----------------------------------------------------'

@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>车极视</string>
+	<string>8888</string>
 	<key>CFBundleDisplayName_en</key>
-	<string>VCar</string>
+	<string>88888</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
+	<string>888888</string>
 	<key>app_agent_id</key>
-	<string>1</string>
+	<string>8888888</string>
 	<key>app_company_info</key>
-	<string>车极视</string>
+	<string>88888888</string>
 	<key>app_version_code</key>
-	<string>10</string>
+	<string>888888888</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.temobi.vcar</string>
+	<string>8888888888</string>
 	<key>app_baidumap_key</key>
-	<string>OhdXbGSmSmgoapwTCOscz3UR96dH1EDF</string>
+	<string>88888888888</string>
 	<key>app_server_host</key>
-	<string>120.55.163.83</string>
+	<string>888888888888</string>
 	<key>wx_appid</key>
-	<string>wx20f3aac99e92afd9</string>
+	<string>8888888888888</string>
 	<key>wx_app_secret</key>
-	<string>6afd12aebc501d7404b52f366e51f578</string>
+	<string>88888888888888</string>
 	<key>qzone_appid</key>
-	<string>1105448569</string>
+	<string>888888888888888</string>
 	<key>qzone_key</key>
-	<string>JSrjCWUKcENHeFaB</string>
+	<string>8888888888888888</string>
 	<key>weibo</key>
-	<string>3.61156762E9</string>
+	<string>88888888888888888</string>
 	<key>weibo_secret</key>
-	<string>8c786d2e3432decaac03190ea73ee288</string>
+	<string>888888888888888888</string>
 </dict>
 </plist>
