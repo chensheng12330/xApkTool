@@ -42,15 +42,19 @@ if [ ! -d "${INPUT_PATH}" ]; then
 	echo "打包资源文件夹不存在，请检察脚本参数1."
 	exit 1
 else
-	echo "(0x00) √  "
+	echo " "
 fi
 
-if [ ! -n "$2" ] ;then
-	echo "APK包名不存在，请检察脚本参数2."
-	exit 1
+
+#检测apk文件是否存在
+if [ ! -f "${APKCopy}" ]; then
+echo "--> ERROR-错误501：找不到封IPA原始包:[${APP_Identify}.apk], 请复制对应的IPA包到 /src_apk/ 目录中."
+exit 1
 else
-	echo "————————————————————————————————————————"
+echo "(0x00) √  "
+echo ""
 fi
+
 ############################################
 
 
@@ -142,10 +146,10 @@ else
   echo ""
 fi
 
-
+OUTPUT_APK="${TEMP_ID}_$APP_DisplayName.apk"
 #step 0x06 执行APK签名
 #jarsigner -verbose -keystore Epo2016IntApp.keystore -storepass Epo2016IntApp -signedjar signed.apk -digestalg SHA1 -sigalg MD5withRSA xxx.apk epoint
-SG_APK="${INPUT_PATH}/$2.apk"
+SG_APK="${INPUT_PATH}/${OUTPUT_APK}"
 jarsigner -verbose -keystore Epo2016IntApp.keystore -storepass Epo2016IntApp -signedjar ${SG_APK} -digestalg SHA1 -sigalg MD5withRSA "${B_APK_PATH}" epoint
 
 #查询打包是否成功

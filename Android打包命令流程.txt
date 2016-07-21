@@ -1,0 +1,28 @@
+前戏： 
+a.可使用SSH 连接，进行Shell命令执行
+b.可使用SFTP 连接，进行FTP文件上/下传的管理
+c.IP地址：192.168.110.165
+d.ssh 连接命令： ssh apple@192.168.110.165   连接成功后，输入密码： apple
+e.登陆用户名： apple
+f.登陆密码：   apple
+
+————————————神马分割线——————————————
+
+
+Step 一： 进入  /Users/apple/PKG/AndPK/project_data_dir  目录中，建立项目名称,往文件夹内放入项目所需要的资源文件。文件列表如下，如不懂可参考 project_data_dir/xcar_data/ 文件列表示例内容：
+
+/**
+ic_launcher-web.png	ic_launcher_72.png	mdm2.plist
+ic_launcher_144.png	ic_launcher_96.png	start_page_bg.png
+ic_launcher_48.png	mdm.plist
+**/
+
+Step 二： 进入 src_apk/ 目录中，上传 打包所需要的apk副本文件，其文件名一定要与 Step 一 中上传的 mdm.plist文件内的 [CFBundleIdentifier] 字段值一致.
+
+
+Step 三： 准备OK,执行打包脚本（Step 一所建立的目录，绝对路径值）
+./xapk.sh  /Users/apple/PKG/AndPK/project_data_dir/xcar_data/
+
+
+Step 四：等待提示结果，如出现 (0x0FFFF)----->Nice Worker! 打包成功!  GET √ 
+则证明打包成功了，可到 安装包路径提出 apk文件。

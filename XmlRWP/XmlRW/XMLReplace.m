@@ -93,7 +93,7 @@
     
     //PARAM.AGENT_ID
     NSDictionary *rpData = @{@"com.baidu.lbsapi.API_KEY":dataSource[app_baidumap_key],
-                             @"PARAM.BASE_URL":[NSString stringWithFormat:@"http://%@",dataSource[app_server_host]],
+                             @"PARAM.BASE_URL":[NSString stringWithFormat:@"http://%@/",dataSource[app_server_host]],
                              @"PARAM.AGENT_ID":dataSource[app_agent_id],
                              @"PARAM.SHARE.QQ.APPID":dataSource[qzone_appid],
                              @"PARAM.SHARE.QQ.APPKEY":dataSource[qzone_key],

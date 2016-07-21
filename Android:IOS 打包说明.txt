@@ -1,0 +1,28 @@
+
+当前Shell工作目录： /Users/apple/PKG/AndPK/
+
+Step 一：Android打包执行命令
+	./xapk.sh  /Users/apple/PKG/AndPK/project_data_dir/xcar_data/
+
+Step 二：IOS打包执行命令
+	./xipa.sh  /Users/apple/PKG/AndPK/project_data_dir/xcar_data/
+
+	
+
+脚本打包说明：
+
+project_data_dir/   为各打包项目所需要的项目文件夹列表，
+project_data_dir/xcar_data/          为某个项目打包所需要的资源列表如表如下：
+————————
+ic_launcher-web.png	ic_launcher_72.png	mdm2.plist
+ic_launcher_144.png	ic_launcher_96.png	start_page_bg.png
+ic_launcher_48.png	mdm.plist
+所有需要打包资源文件夹目录，都放入此文件夹中（project_data_dir）.
+———————-
+
+src_apk/   此为Android打包所需要的APK解包副本，某个项目打包时，其解包来于此文件夹中，
+文件夹内，apk文件为多个，其命名，请一定要匹配 project_data_dir/xcar_data/mdm.plist 中所定义的CFBundleIdentifier 字段值。举个粟子：
+
+设定： project_data_dir/xcar_data/mdm.plist中 CFBundleIdentifier=com.temobi.vcar
+那么： src_apk中将对应apk文件，命名为： com.temobi.vcar.apk ， 这样脚本才会执行成功.
+
