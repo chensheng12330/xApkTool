@@ -21,6 +21,8 @@
 #define wx_app_secret       (@"wx_app_secret")
 #define wx_appid            (@"wx_appid")
 #define SUPPORT_4G          (@"SUPPORT_4G")
+#define weibo_secret        (@"weibo_secret")
+#define weibo               (@"weibo")
 @implementation XMLReplace
 
 -(int) startWorker
@@ -99,6 +101,8 @@
                              @"PARAM.SHARE.QQ.APPKEY":dataSource[qzone_key],
                              @"PARAM.SHARE.WEIXIN.APPSECRET":dataSource[wx_app_secret],
                              @"PARAM.SHARE.WEIXIN.APPID":dataSource[wx_appid],
+                             @"PARAM.SHARE.WEIBO.APPKEY":dataSource[weibo],
+                             @"PARAM.SHARE.WEIBO.APPSECRET":dataSource[weibo_secret],
                              @"PARAM.IS_SUPPORT_4G":sp4g
                              };
     
